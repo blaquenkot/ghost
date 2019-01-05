@@ -12,6 +12,7 @@ func _process(delta):
 
 func dual_shot():
 	var shot = DualShot.instance()
+	$ShotTimer.start()
 	$Player1.add_child(shot)
 	
 	return shot
@@ -22,3 +23,8 @@ func adjust_shot(shot):
 	
 	var LENGTH_OF_SHOT_SPRITE = 64 # :skull:
 	shot.transform.x = ($Player1.position - $Player2.position) / LENGTH_OF_SHOT_SPRITE
+
+func _on_ShotTimer_timeout():
+	current_shot.queue_free()
+	current_shot = null
+	$ShotTimer.stop()

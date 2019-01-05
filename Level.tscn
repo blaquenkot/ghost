@@ -94,4 +94,13 @@ position = Vector2( 868.534, 324.541 )
 
 position = Vector2( 874.716, 976.715 )
 
+[node name="ShotTimer" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]
+
 
