@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://level.tres" type="TileSet" id=1]
 [ext_resource path="res://Character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -77,5 +78,9 @@ editor_draw_drag_margin = false
 
 position = Vector2( 270.763, 127.732 )
 _sections_unfolded = [ "Collision", "collision" ]
+
+[node name="Enemy" parent="." index="4" instance=ExtResource( 3 )]
+
+position = Vector2( 817.945, 356.045 )
 
 

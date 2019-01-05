@@ -34,3 +34,16 @@ func _physics_process(delta):
 		vel.y = -JUMP_SPEED
 
 	move_and_slide(vel)
+	
+	if collided_with_enemy():
+		get_tree().reload_current_scene()
+
+func collided_with_enemy():
+	var number_of_collisions = get_slide_count()
+	
+	for i in range(number_of_collisions):
+		var collision = get_slide_collision(i)
+		if collision.collider.name == 'Enemy':
+			return true
+		
+	return false

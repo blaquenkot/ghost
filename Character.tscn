@@ -12,9 +12,10 @@ extents = Vector2( 21.713, 26.3465 )
 
 input_pickable = false
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
