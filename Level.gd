@@ -4,7 +4,7 @@ var DualShot = preload("res://DualShot.tscn")
 var current_shot
 
 func _process(delta):
-	if Input.is_action_just_pressed("dual_action"):
+	if !current_shot && Input.is_action_just_pressed("dual_action"):
 		current_shot = dual_shot()
 
 	if current_shot:
