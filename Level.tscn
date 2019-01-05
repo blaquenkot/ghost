@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Level.gd" type="Script" id=1]
 [ext_resource path="res://level.tres" type="TileSet" id=2]
-[ext_resource path="res://Enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player1.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -52,23 +52,7 @@ format = 1
 tile_data = PoolIntArray( 65537, 0, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 196628, 1, 0, 196629, 1, 0, 196630, 1, 0, 196631, 1, 0, 196632, 1, 0, 196633, 1, 0, 196634, 1, 0, 196635, 1, 0, 196636, 1, 0, 196637, 1, 0, 196638, 1, 0, 196639, 1, 0, 196640, 1, 0, 196641, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 524306, 1, 0, 524307, 1, 0, 524308, 1, 0, 524309, 1, 0, 524310, 1, 0, 524311, 1, 0, 524312, 1, 0, 524313, 1, 0, 524314, 1, 0, 524315, 1, 0, 524316, 1, 0, 524317, 1, 0, 524318, 1, 0, 524319, 1, 0, 524320, 1, 0, 524321, 1, 0 )
 _sections_unfolded = [ "Cell", "Collision" ]
 
-[node name="Enemy2" parent="." index="2" instance=ExtResource( 3 )]
-
-position = Vector2( 868.534, 324.541 )
-
-[node name="Enemy" parent="." index="3" instance=ExtResource( 3 )]
-
-position = Vector2( 874.716, 976.715 )
-
-[node name="Player1" parent="." index="4" instance=ExtResource( 4 )]
-
-position = Vector2( 124, 308 )
-
-[node name="Player2" parent="." index="5" instance=ExtResource( 5 )]
-
-position = Vector2( 141, 924 )
-
-[node name="Camera2D" type="Camera2D" parent="." index="6"]
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
 
 position = Vector2( 1024.01, 551.391 )
 anchor_mode = 1
@@ -93,5 +77,30 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+
+[node name="Player1" parent="." index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 124, 308 )
+
+[node name="Player2" parent="." index="4" instance=ExtResource( 4 )]
+
+position = Vector2( 141, 924 )
+
+[node name="Enemy2" parent="." index="5" instance=ExtResource( 5 )]
+
+position = Vector2( 868.534, 324.541 )
+
+[node name="Enemy" parent="." index="6" instance=ExtResource( 5 )]
+
+position = Vector2( 874.716, 976.715 )
+
+[node name="ShotTimer" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]
 
 

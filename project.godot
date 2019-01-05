@@ -11,6 +11,7 @@ config_version=3
 [application]
 
 config/name="wip"
+run/main_scene="res://Level.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -52,12 +53,15 @@ player1_jump=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_na
  ]
 player2_jump=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
  ]
+dual_action=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
 
 [layer_names]
 
 2d_physics/layer_1="Platforms"
 2d_physics/layer_2="Characters"
 2d_physics/layer_3="Enemies"
+2d_physics/layer_4="FriendlyAttacks"
 
 [rendering]
 
