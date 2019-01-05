@@ -9,6 +9,9 @@ const FRICTION = 0.8
 var acc = Vector2()
 var vel = Vector2()
 
+var min_x = 0
+var max_x = 0
+
 var right_action = ''
 var left_action = ''
 var jump_action = ''
@@ -37,6 +40,9 @@ func _physics_process(delta):
 	if vel.x != 0 && acc.x == 0:
 		# TODO: Ensure vel.x reaches 0
 		vel.x *= FRICTION
+		
+	if !can_move():
+		vel.x = 0
 	
 	if Input.is_action_just_pressed(jump_action):
 		# TODO: Don't jump in the air
@@ -56,3 +62,11 @@ func collided_with_enemy():
 			return true
 		
 	return false
+	
+func can_move():
+	if (position.x < min_x):
+		return vel.x > 0
+	elif (position.x > max_x):
+		return vel.x <0
+	
+	return true
