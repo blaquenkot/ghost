@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/Spritesheet/spritesheet_other.png" type="Texture" id=1]
+
+[node name="DualShot" type="Node2D"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Origin" type="Position2D" parent="." index="0"]
+
+[node name="Sprite" type="Sprite" parent="Origin" index="0"]
+
+position = Vector2( -32, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 332, 543, 10, 64 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+
