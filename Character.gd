@@ -9,15 +9,24 @@ const FRICTION = 0.8
 var acc = Vector2()
 var vel = Vector2()
 
+var right_action = ''
+var left_action = ''
+var jump_action = ''
+
+func set_up_actions(player_id):
+	right_action = player_id + '_right'
+	left_action = player_id + '_left'
+	jump_action = player_id + '_jump'
+	
 func _ready():
     set_physics_process(true)
 
 func _physics_process(delta):
 	acc.y = GRAVITY
 
-	if Input.is_action_pressed('player1_right'):
+	if Input.is_action_pressed(right_action):
 		acc.x = ACCEL
-	elif Input.is_action_pressed('player1_left'):
+	elif Input.is_action_pressed(left_action):
 		acc.x = -ACCEL
 	else:
 		acc.x = 0
@@ -29,7 +38,7 @@ func _physics_process(delta):
 		# TODO: Ensure vel.x reaches 0
 		vel.x *= FRICTION
 	
-	if Input.is_action_just_pressed('player1_jump'):
+	if Input.is_action_just_pressed(jump_action):
 		# TODO: Don't jump in the air
 		vel.y = -JUMP_SPEED
 
@@ -43,7 +52,7 @@ func collided_with_enemy():
 	
 	for i in range(number_of_collisions):
 		var collision = get_slide_collision(i)
-		if collision.collider.name == 'Enemy':
+		if 'Enemy' in collision.collider.name:
 			return true
 		
 	return false
