@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wip.png-ee9263d067236ebc8c22c169a50b5d5f.stex"
+path="res://.import/wip.png-cb02c5b58bd161482c159a715d58d43f.stex"
 
 [deps]
 
-source_file="res://releases/wip.png"
-dest_files=[ "res://.import/wip.png-ee9263d067236ebc8c22c169a50b5d5f.stex" ]
+source_file="res://wip.png"
+dest_files=[ "res://.import/wip.png-cb02c5b58bd161482c159a715d58d43f.stex" ]
 
 [params]
 
