@@ -1,6 +1,6 @@
 extends Node2D
 
-var padding = 64
+var padding = 32
 var DualShot = preload("res://DualShot.tscn")
 var current_shot
 
@@ -28,10 +28,10 @@ func dual_shot():
 	return shot
 
 func adjust_shot(shot):
-	shot.position.y = 20
+	shot.position.y = 8
 	shot.set_rotation($Player2.get_angle_to($Player1.position))
 	
-	var LENGTH_OF_SHOT_SPRITE = 64 # :skull:
+	var LENGTH_OF_SHOT_SPRITE = 128 # :skull:
 	shot.transform.x = ($Player1.position - $Player2.position) / LENGTH_OF_SHOT_SPRITE
 
 func get_limits():

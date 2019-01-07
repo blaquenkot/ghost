@@ -1,10 +1,50 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player1.gd" type="Script" id=2]
+[ext_resource path="res://assets/ghost.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "idle"
+length = 1.5
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
 
 [node name="Player1" instance=ExtResource( 1 )]
 
+position = Vector2( 0, 0.105888 )
+scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="Sprite" parent="." index="0"]
+
+texture = ExtResource( 3 )
+hframes = 3
+frame = 2
+region_enabled = false
+_sections_unfolded = [ "Animation", "Material", "Offset", "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( -0.0123918, 0.392028 )
+scale = Vector2( 1.01912, 1.04305 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+
+anims/idle = SubResource( 1 )
 
 

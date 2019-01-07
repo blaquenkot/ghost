@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spritesheet_complete.png-f4b18aff61fd5a8a9983f26136bce9aa.stex"
+path="res://.import/bat.png-b26f11b952f683bf21c057ff6fd863c3.stex"
 
 [deps]
 
-source_file="res://assets/Spritesheet/spritesheet_complete.png"
-dest_files=[ "res://.import/spritesheet_complete.png-f4b18aff61fd5a8a9983f26136bce9aa.stex" ]
+source_file="res://assets/bat.png"
+dest_files=[ "res://.import/bat.png-b26f11b952f683bf21c057ff6fd863c3.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

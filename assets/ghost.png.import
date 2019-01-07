@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Preview_KenneyNL.png-e7146fb9bb3f83c9c81366a3beca491a.stex"
+path="res://.import/ghost.png-69c64473a1c619a67ecb2cd67e24381e.stex"
 
 [deps]
 
-source_file="res://assets/Preview_KenneyNL.png"
-dest_files=[ "res://.import/Preview_KenneyNL.png-e7146fb9bb3f83c9c81366a3beca491a.stex" ]
+source_file="res://assets/ghost.png"
+dest_files=[ "res://.import/ghost.png-69c64473a1c619a67ecb2cd67e24381e.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -25,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

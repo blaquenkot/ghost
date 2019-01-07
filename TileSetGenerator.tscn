@@ -1,31 +1,89 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/Tilesheet/tilesheet_complete_2X.png" type="Texture" id=1]
+[sub_resource type="StreamTexture" id=1]
 
-[sub_resource type="RectangleShape2D" id=1]
+flags = 0
+load_path = "res://.import/tiles.png-0d11a4bcdfb48056f67a66da241684a1.stex"
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 64, 64 )
+extents = Vector2( 8, 8 )
 
 [node name="Node" type="Node"]
 
-[node name="BG" type="Sprite" parent="." index="0"]
+[node name="BG1" type="Sprite" parent="." index="0"]
 
-position = Vector2( -128, -128 )
-texture = ExtResource( 1 )
+position = Vector2( -32, 0 )
+texture = SubResource( 1 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 128, 128 )
-_sections_unfolded = [ "Offset" ]
+region_rect = Rect2( 0, 16, 16, 16 )
+_sections_unfolded = [ "Region" ]
 
-[node name="Platform1" type="Sprite" parent="." index="1"]
+[node name="BG2" type="Sprite" parent="." index="1"]
 
-position = Vector2( 128, -128 )
-texture = ExtResource( 1 )
+texture = SubResource( 1 )
 region_enabled = true
-region_rect = Rect2( 256, 0, 128, 128 )
-_sections_unfolded = [ "Offset", "Region" ]
+region_rect = Rect2( 16, 16, 16, 16 )
+_sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform1" index="0"]
+[node name="BG3" type="Sprite" parent="." index="2"]
+
+position = Vector2( 32, 0 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 16, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="BG4" type="Sprite" parent="." index="3"]
+
+position = Vector2( 64, 0 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 16, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="BG5" type="Sprite" parent="." index="4"]
+
+position = Vector2( -32, 32 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="BG6" type="Sprite" parent="." index="5"]
+
+position = Vector2( 0, 32 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 32, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="BG7" type="Sprite" parent="." index="6"]
+
+position = Vector2( 32, 32 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="BG8" type="Sprite" parent="." index="7"]
+
+position = Vector2( 64, 32 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 32, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Floor1" type="Sprite" parent="." index="8"]
+
+position = Vector2( -32, 64 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor1" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -35,8 +93,250 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1/StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor1/StaticBody2D" index="0"]
 
-shape = SubResource( 1 )
+shape = SubResource( 2 )
+
+[node name="Floor2" type="Sprite" parent="." index="9"]
+
+position = Vector2( 0, 64 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 48, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Floor2" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2/StaticBody2D2" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Floor3" type="Sprite" parent="." index="10"]
+
+position = Vector2( 32, 64 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 48, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Floor3" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3/StaticBody2D3" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Floor4" type="Sprite" parent="." index="11"]
+
+position = Vector2( 64, 64 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 48, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Floor4" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor4/StaticBody2D4" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Floor5" type="Sprite" parent="." index="12"]
+
+position = Vector2( -32, 96 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Floor5" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor5/StaticBody2D5" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Floor6" type="Sprite" parent="." index="13"]
+
+position = Vector2( 0, 96 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 64, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Floor6" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor6/StaticBody2D6" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Floor7" type="Sprite" parent="." index="14"]
+
+position = Vector2( 32, 96 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 64, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Floor7" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor7/StaticBody2D7" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Floor8" type="Sprite" parent="." index="15"]
+
+position = Vector2( 64, 96 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 64, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Floor8" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor8/StaticBody2D8" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Ceiling1" type="Sprite" parent="." index="16"]
+
+position = Vector2( -32, -32 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Ceiling1" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling1/StaticBody2D9" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Ceiling2" type="Sprite" parent="." index="17"]
+
+position = Vector2( 0, -32 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Ceiling2" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling2/StaticBody2D10" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Ceiling3" type="Sprite" parent="." index="18"]
+
+position = Vector2( 32, -32 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Ceiling3" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling3/StaticBody2D11" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Ceiling4" type="Sprite" parent="." index="19"]
+
+position = Vector2( 64, -32 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Ceiling4" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling4/StaticBody2D12" index="0"]
+
+shape = SubResource( 2 )
 
 

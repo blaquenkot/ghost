@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-const GRAVITY = 80
-const ACCEL = 100
-const JUMP_SPEED = 1000
-const MAX_SPEED = 1000
+const GRAVITY = 40
+const ACCEL = 50
+const JUMP_SPEED = 500
+const MAX_SPEED = 500
 const FRICTION = 0.8
 
 var acc = Vector2()
@@ -22,7 +22,8 @@ func set_up_actions(player_id):
 	jump_action = player_id + '_jump'
 	
 func _ready():
-    set_physics_process(true)
+	set_physics_process(true)
+	$AnimationPlayer.play('idle')
 
 func _physics_process(delta):
 	acc.y = GRAVITY
@@ -40,6 +41,8 @@ func _physics_process(delta):
 	if vel.x != 0 && acc.x == 0:
 		# TODO: Ensure vel.x reaches 0
 		vel.x *= FRICTION
+		
+	$Sprite.flip_h = (vel.x < 0)
 		
 	if !can_move():
 		vel.x = 0
