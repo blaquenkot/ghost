@@ -7,11 +7,11 @@
 custom_solver_bias = 0.0
 extents = Vector2( 6.91236, 7.20522 )
 
-[node name="Character" type="KinematicBody2D"]
+[node name="Character" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 2
-collision_mask = 7
+collision_mask = 23
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]

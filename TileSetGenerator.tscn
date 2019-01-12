@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/grott_tiles_extended.png" type="Texture" id=1]
 
 [sub_resource type="StreamTexture" id=1]
 
@@ -77,6 +79,7 @@ _sections_unfolded = [ "Region" ]
 
 [node name="Floor1" type="Sprite" parent="." index="8"]
 
+editor/display_folded = true
 position = Vector2( -32, 64 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -99,6 +102,7 @@ shape = SubResource( 2 )
 
 [node name="Floor2" type="Sprite" parent="." index="9"]
 
+editor/display_folded = true
 position = Vector2( 0, 64 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -121,6 +125,7 @@ shape = SubResource( 2 )
 
 [node name="Floor3" type="Sprite" parent="." index="10"]
 
+editor/display_folded = true
 position = Vector2( 32, 64 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -143,6 +148,7 @@ shape = SubResource( 2 )
 
 [node name="Floor4" type="Sprite" parent="." index="11"]
 
+editor/display_folded = true
 position = Vector2( 64, 64 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -165,6 +171,7 @@ shape = SubResource( 2 )
 
 [node name="Floor5" type="Sprite" parent="." index="12"]
 
+editor/display_folded = true
 position = Vector2( -32, 96 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -187,6 +194,7 @@ shape = SubResource( 2 )
 
 [node name="Floor6" type="Sprite" parent="." index="13"]
 
+editor/display_folded = true
 position = Vector2( 0, 96 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -209,6 +217,7 @@ shape = SubResource( 2 )
 
 [node name="Floor7" type="Sprite" parent="." index="14"]
 
+editor/display_folded = true
 position = Vector2( 32, 96 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -231,6 +240,7 @@ shape = SubResource( 2 )
 
 [node name="Floor8" type="Sprite" parent="." index="15"]
 
+editor/display_folded = true
 position = Vector2( 64, 96 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -253,6 +263,7 @@ shape = SubResource( 2 )
 
 [node name="Ceiling1" type="Sprite" parent="." index="16"]
 
+editor/display_folded = true
 position = Vector2( -32, -32 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -275,6 +286,7 @@ shape = SubResource( 2 )
 
 [node name="Ceiling2" type="Sprite" parent="." index="17"]
 
+editor/display_folded = true
 position = Vector2( 0, -32 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -290,6 +302,7 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling2/StaticBody2D10" index="0"]
 
@@ -297,6 +310,7 @@ shape = SubResource( 2 )
 
 [node name="Ceiling3" type="Sprite" parent="." index="18"]
 
+editor/display_folded = true
 position = Vector2( 32, -32 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -334,8 +348,104 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling4/StaticBody2D12" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Spikes1" type="Sprite" parent="." index="20"]
+
+position = Vector2( 96, 96 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Spikes1" index="0"]
+
+input_pickable = false
+collision_layer = 16
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes1/StaticBody2D12" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Spikes2" type="Sprite" parent="." index="21"]
+
+editor/display_folded = true
+position = Vector2( 128, 96 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 16, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Spikes2" index="0"]
+
+input_pickable = false
+collision_layer = 16
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes2/StaticBody2D12" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Spikes3" type="Sprite" parent="." index="22"]
+
+editor/display_folded = true
+position = Vector2( 96, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Spikes3" index="0"]
+
+input_pickable = false
+collision_layer = 16
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes3/StaticBody2D12" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Spikes4" type="Sprite" parent="." index="23"]
+
+editor/display_folded = true
+position = Vector2( 128, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 64, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Spikes4" index="0"]
+
+input_pickable = false
+collision_layer = 16
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes4/StaticBody2D12" index="0"]
 
 shape = SubResource( 2 )
 

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shot.png-949e37eca22d78a2e1a56bbb7ad611ec.stex"
+path="res://.import/grott_tiles_extended.png-7cef1f2942111c3a470d2bb7d7a5cb19.stex"
 
 [deps]
 
-source_file="res://assets/shot.png"
-dest_files=[ "res://.import/shot.png-949e37eca22d78a2e1a56bbb7ad611ec.stex" ]
+source_file="res://assets/grott_tiles_extended.png"
+dest_files=[ "res://.import/grott_tiles_extended.png-7cef1f2942111c3a470d2bb7d7a5cb19.stex" ]
 
 [params]
 
