@@ -14,4 +14,6 @@ export_presets.cfg
 
 # End of https://www.gitignore.io/api/godot
 
+.DS_Store
+
 releases/
