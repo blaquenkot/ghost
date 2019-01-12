@@ -26,7 +26,10 @@ func _ready():
 	$AnimationPlayer.play('idle')
 
 func _physics_process(delta):
-	acc.y = GRAVITY
+	if is_on_floor():
+		acc.y = 0
+	else:
+		acc.y = GRAVITY
 
 	if Input.is_action_pressed(right_action):
 		acc.x = ACCEL
@@ -35,6 +38,7 @@ func _physics_process(delta):
 	else:
 		acc.x = 0
 
+	# TODO: Add terminal velocity in y
 	vel += acc
 	vel.x = clamp(vel.x, -MAX_SPEED, MAX_SPEED)
 	
