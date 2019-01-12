@@ -47,11 +47,10 @@ func _physics_process(delta):
 	if !can_move():
 		vel.x = 0
 	
-	if Input.is_action_just_pressed(jump_action):
-		# TODO: Don't jump in the air
+	if is_on_floor() && Input.is_action_just_pressed(jump_action):
 		vel.y = -JUMP_SPEED
 
-	move_and_slide(vel)
+	move_and_slide(vel, Vector2(0, -1))
 	
 	if collided_with_enemy():
 		get_tree().reload_current_scene()
