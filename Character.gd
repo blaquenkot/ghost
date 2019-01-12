@@ -30,7 +30,10 @@ func _ready():
 	$AnimationPlayer.play('idle')
 
 func _physics_process(delta):
-	acc.y = GRAVITY
+	if is_on_floor():
+		acc.y = 0
+	else:
+		acc.y = GRAVITY
 
 	if Input.is_action_pressed(right_action):
 		acc.x = ACCEL
@@ -39,6 +42,7 @@ func _physics_process(delta):
 	else:
 		acc.x = 0
 
+	# TODO: Add terminal velocity in y
 	vel += acc
 	vel.x = clamp(vel.x, -MAX_SPEED, MAX_SPEED)
 	
@@ -51,11 +55,10 @@ func _physics_process(delta):
 	if !can_move():
 		vel.x = 0
 	
-	if Input.is_action_just_pressed(jump_action):
-		# TODO: Don't jump in the air
+	if is_on_floor() && Input.is_action_just_pressed(jump_action):
 		vel.y = -JUMP_SPEED
 
-	move_and_slide(vel)
+	move_and_slide(vel, Vector2(0, -1))
 	
 	if can_take_damage and collided_with_enemy():
 		can_take_damage = false
