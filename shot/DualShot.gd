@@ -1,5 +1,8 @@
 extends Node2D
 
+const LIGHTNING_GENERATIONS = 5
+const LIGHTNING_OFFSET = 5.0
+
 var from
 var to
 
@@ -14,7 +17,7 @@ func _process(delta):
 	stretch()
 
 func _draw():
-	draw_line(Vector2(0,0), to.position - from.position, Color(255, 0, 0), 5)
+	draw_lightning(from.position, to.position, Color(255, 255, 255), 2)
 
 func stretch():
 	position = from.position
@@ -24,3 +27,26 @@ func stretch():
 func _on_Beam_body_entered(body):
 	# TODO: Send "attacked" message instead
 	body.queue_free()
+
+func draw_lightning(from, to, color, width):
+	var origin = Vector2(0,0)
+	var end = to - from
+
+	var segments = [{'from': origin, 'to': end}] # TODO: Is there a 2x2 matrix structure?
+	var offset_limit = LIGHTNING_OFFSET
+
+	for i in range(LIGHTNING_GENERATIONS):
+		var current_segments = segments.duplicate()
+
+		for segment in current_segments:
+			segments.erase(segment)
+			
+			var normal = (segment['to'] - segment['from']).normalized().tangent()
+			var mid_point = (segment['to'] + segment['from']) / 2
+			mid_point = mid_point + normal * rand_range(-LIGHTNING_OFFSET, LIGHTNING_OFFSET)
+			
+			segments.append({'from': segment['from'], 'to': mid_point    })
+			segments.append({'from': mid_point,       'to': segment['to']})
+
+	for segment in segments:
+		draw_line(segment['from'], segment['to'], color, width)
