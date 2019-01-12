@@ -61,6 +61,7 @@ func collided_with_enemy():
 	
 	for i in range(number_of_collisions):
 		var collision = get_slide_collision(i)
+		print(collision.collider.name)
 		if 'Enemy' in collision.collider.name || 'DeathlyObstacle' in collision.collider.name: # lol
 			return true
 		
