@@ -6,6 +6,10 @@ const JUMP_SPEED = 500
 const MAX_SPEED = 500
 const FRICTION = 0.8
 
+signal character_took_damage
+
+var can_take_damage = true
+
 var acc = Vector2()
 var vel = Vector2()
 
@@ -53,15 +57,17 @@ func _physics_process(delta):
 
 	move_and_slide(vel)
 	
-	if collided_with_enemy():
-		get_tree().reload_current_scene()
+	if can_take_damage and collided_with_enemy():
+		can_take_damage = false
+		$InvincibilityTimer.start()
+		$FlashTimer.start()
+		emit_signal('character_took_damage')
 
 func collided_with_enemy():
 	var number_of_collisions = get_slide_count()
 	
 	for i in range(number_of_collisions):
 		var collision = get_slide_collision(i)
-		print(collision.collider.name)
 		if 'Enemy' in collision.collider.name || 'DeathlyObstacle' in collision.collider.name: # lol
 			return true
 		
@@ -74,3 +80,14 @@ func can_move():
 		return vel.x <0
 	
 	return true
+
+func _on_Timer_timeout():
+	$Sprite.modulate = Color(1,1,1,1)
+	$FlashTimer.stop()
+	can_take_damage = true
+
+func _on_FlashTimer_timeout():
+	if $Sprite.modulate == Color(1,1,1,1):
+		$Sprite.modulate = Color(10,10,10,1)
+	else: 
+		$Sprite.modulate = Color(1,1,1,1)

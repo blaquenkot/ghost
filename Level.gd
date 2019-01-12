@@ -5,6 +5,8 @@ var DualShot = preload("res://shot/DualShot.tscn")
 var Sparks = preload("res://shot/Sparks.tscn")
 var current_shot
 
+var lives = 6
+
 func _process(delta):
 	$Camera2D.position.x = abs($Player1.position.x - $Player2.position.x) * 0.5 + min($Player1.position.x, $Player2.position.x)
 
@@ -47,3 +49,10 @@ func _on_ShotTimer_timeout():
 	current_shot.queue_free()
 	current_shot = null
 	$ShotTimer.stop()
+	
+func _on_player_took_damage():
+	lives -= 1
+	if lives <= 0:
+		get_tree().reload_current_scene()
+	else:
+		$CanvasLayer/MarginContainer/TextureRect.texture = load("res://assets/health/health%s.png" % lives)

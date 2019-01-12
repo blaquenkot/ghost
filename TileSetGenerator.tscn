@@ -12,7 +12,7 @@ load_path = "res://.import/tiles.png-0d11a4bcdfb48056f67a66da241684a1.stex"
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 [node name="BG1" type="Sprite" parent="." index="0"]
 

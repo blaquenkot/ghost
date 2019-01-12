@@ -35,4 +35,22 @@ playback_speed = 1.5
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
+[node name="InvincibilityTimer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="FlashTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_Timer_timeout"]
+
+[connection signal="timeout" from="FlashTimer" to="." method="_on_FlashTimer_timeout"]
+
 
