@@ -8,16 +8,18 @@ func summon_between(first, second):
 	to = second
 
 	stretch()
-
+	
 func _process(delta):
+	update()
 	stretch()
+
+func _draw():
+	draw_line(Vector2(0,0), to.position - from.position, Color(255, 0, 0), 5)
 
 func stretch():
 	position = from.position
 	$Beam.set_rotation(to.get_angle_to(from.position))
-
-	var LENGTH_OF_SHOT_SPRITE = 128 # :skull:
-	$Beam.transform.x = (from.position - to.position) / LENGTH_OF_SHOT_SPRITE * 2 # ¯\_(ツ)_/¯
+	$Beam.transform.x = (from.position - to.position) / 2 # ¯\_(ツ)_/¯
 
 func _on_Beam_body_entered(body):
 	# TODO: Send "attacked" message instead
