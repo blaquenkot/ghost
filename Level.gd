@@ -1,7 +1,8 @@
 extends Node2D
 
 var padding = 32
-var DualShot = preload("res://DualShot.tscn")
+var DualShot = preload("res://shot/DualShot.tscn")
+var Sparks = preload("res://shot/Sparks.tscn")
 var current_shot
 
 func _process(delta):
@@ -17,22 +18,22 @@ func _process(delta):
 	if !current_shot && Input.is_action_just_pressed("dual_action"):
 		current_shot = dual_shot()
 
-	if current_shot:
-		adjust_shot(current_shot)
-
 func dual_shot():
 	var shot = DualShot.instance()
+	add_child(shot)
 	$ShotTimer.start()
-	$Player1.add_child(shot)
+	shot.summon_between($Player1, $Player2)
+
+	create_sparks_at($Player1.position)
+	create_sparks_at($Player2.position)
 	
 	return shot
 
-func adjust_shot(shot):
-	shot.position.y = 8
-	shot.set_rotation($Player2.get_angle_to($Player1.position))
-	
-	var LENGTH_OF_SHOT_SPRITE = 128 # :skull:
-	shot.transform.x = ($Player1.position - $Player2.position) / LENGTH_OF_SHOT_SPRITE
+func create_sparks_at(position):
+	var particles = Sparks.instance()
+	particles.position = position
+	add_child(particles)
+	particles.emitting = true
 
 func get_limits():
 	var ctrans = get_canvas_transform()
