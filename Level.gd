@@ -28,8 +28,8 @@ func dual_shot():
 	$ShotTimer.start()
 	shot.summon_between($Player1, $Player2)
 
-	create_sparks_at($Player1.position)
-	create_sparks_at($Player2.position)
+	# create_sparks_at($Player1.position)
+	# create_sparks_at($Player2.position)
 	
 	return shot
 

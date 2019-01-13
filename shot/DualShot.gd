@@ -13,8 +13,8 @@ func summon_between(first, second):
 	stretch()
 	
 func _process(delta):
-	update()
 	stretch()
+	update()
 
 func _draw():
 	draw_lightning(from.position, to.position, Color(255, 255, 255), 2)
