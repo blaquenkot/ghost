@@ -3,22 +3,24 @@ extends Node2D
 var padding = 32
 var DualShot = preload("res://shot/DualShot.tscn")
 var Sparks = preload("res://shot/Sparks.tscn")
+var EndScreen = preload("res://screens/EndScreen.tscn")
 var current_shot
 
 var lives = 6
 
 func _process(delta):
-	$Camera2D.position.x = abs($Player1.position.x - $Player2.position.x) * 0.5 + min($Player1.position.x, $Player2.position.x)
-
-	var limits = get_limits()	
-
-	$Player1.min_x = limits["min"]
-	$Player1.max_x = limits["max"]
-	$Player2.min_x = limits["min"]
-	$Player2.max_x = limits["max"]
-
-	if !current_shot && Input.is_action_just_pressed("dual_action"):
-		current_shot = dual_shot()
+	if $Player1 && $Player2:
+		$Camera2D.position.x = abs($Player1.position.x - $Player2.position.x) * 0.5 + min($Player1.position.x, $Player2.position.x)
+	
+		var limits = get_limits()	
+	
+		$Player1.min_x = limits["min"]
+		$Player1.max_x = limits["max"]
+		$Player2.min_x = limits["min"]
+		$Player2.max_x = limits["max"]
+	
+		if !current_shot && Input.is_action_just_pressed("dual_action"):
+			current_shot = dual_shot()
 
 func dual_shot():
 	var shot = DualShot.instance()
@@ -53,6 +55,13 @@ func _on_ShotTimer_timeout():
 func _on_player_took_damage():
 	lives -= 1
 	if lives <= 0:
-		get_tree().reload_current_scene()
+		the_end()
 	else:
 		$CanvasLayer/MarginContainer/TextureRect.texture = load("res://assets/health/health%s.png" % lives)
+		
+func the_end():
+	var end_screen = EndScreen.instance()
+	$Player1.queue_free()
+	$Player2.queue_free()
+	add_child(end_screen)
+	# get_tree().reload_current_scene()
