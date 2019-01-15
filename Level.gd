@@ -11,7 +11,8 @@ var lives = 6
 func _process(delta):
 	if $Player1 && $Player2:
 		$Camera2D.position.x = abs($Player1.position.x - $Player2.position.x) * 0.5 + min($Player1.position.x, $Player2.position.x)
-	
+		$Camera2D.position.y = abs($Player1.position.y - $Player2.position.y) * 0.5 + min($Player1.position.y, $Player2.position.y)
+
 		var limits = get_limits()	
 	
 		$Player1.min_x = limits["min"]

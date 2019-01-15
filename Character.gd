@@ -58,7 +58,7 @@ func _physics_process(delta):
 	if is_on_floor() && Input.is_action_just_pressed(jump_action):
 		vel.y = -JUMP_SPEED
 
-	move_and_slide(vel, Vector2(0, -1))
+	move_and_slide(vel, Vector2(0, -1), 10, 4, 1.5)
 	
 	if can_take_damage and collided_with_enemy():
 		can_take_damage = false
