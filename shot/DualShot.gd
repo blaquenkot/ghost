@@ -6,11 +6,8 @@ const LIGHTNING_OFFSET = 5.0
 var from
 var to
 
-func summon_between(first, second):
-	from = first
-	to = second
-
-	stretch()
+func _ready():
+	global.shotSFXPlayer.play()
 	
 func _process(delta):
 	stretch()
@@ -19,6 +16,12 @@ func _process(delta):
 func _draw():
 	draw_lightning(from.position, to.position, Color(255, 255, 255), 2)
 
+func summon_between(first, second):
+	from = first
+	to = second
+
+	stretch()
+	
 func stretch():
 	position = from.position
 	$Beam.set_rotation(to.get_angle_to(from.position))

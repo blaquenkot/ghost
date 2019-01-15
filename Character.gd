@@ -56,6 +56,7 @@ func _physics_process(delta):
 		vel.x = 0
 	
 	if is_on_floor() && Input.is_action_just_pressed(jump_action):
+		global.jumpSFXPlayer.play()
 		vel.y = -JUMP_SPEED
 
 	move_and_slide(vel, Vector2(0, -1), 10, 4, 1.5)
