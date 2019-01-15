@@ -60,7 +60,11 @@ func _physics_process(delta):
 
 	move_and_slide(vel, Vector2(0, -1), 10, 4, 1.5)
 	
-	if can_take_damage and collided_with_enemy():
+	if collided_with_enemy():
+		take_damage()
+
+func take_damage():
+	if can_take_damage:
 		can_take_damage = false
 		$InvincibilityTimer.start()
 		$FlashTimer.start()

@@ -257,7 +257,7 @@ extents = Vector2( 8, 8 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -376,17 +376,17 @@ autostart = false
 [node name="Enemy" parent="." index="8" instance=ExtResource( 7 )]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
-position = Vector2( 712.719, 80.6431 )
+position = Vector2( 701.778, 66.5761 )
 
 [node name="Enemy3" parent="." index="9" instance=ExtResource( 7 )]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
-position = Vector2( 1307.26, 76.316 )
+position = Vector2( 1325.23, 64.5935 )
 
 [node name="Enemy5" parent="." index="10" instance=ExtResource( 7 )]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
-position = Vector2( 3278.56, 505.253 )
+position = Vector2( 3277, 498.219 )
 
 [node name="Enemy6" parent="." index="11" instance=ExtResource( 7 )]
 
@@ -396,7 +396,7 @@ position = Vector2( 3279.8, 693.868 )
 [node name="Enemy8" parent="." index="12" instance=ExtResource( 7 )]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
-position = Vector2( 4660.89, 567.223 )
+position = Vector2( 4669.49, 550.812 )
 
 [node name="Enemy12" parent="." index="13" instance=ExtResource( 7 )]
 

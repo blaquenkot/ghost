@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/bat.png" type="Texture" id=2]
@@ -33,6 +33,11 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 7.45673, 13.2615 )
 
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 9.04426, 15.5151 )
+
 [node name="Node" type="Node2D"]
 
 position = Vector2( -0.39975, 0.0021553 )
@@ -47,6 +52,7 @@ curve = SubResource( 1 )
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
 
 position = Vector2( 0.373439, 0.384766 )
+rotation = 2.68758
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -54,10 +60,10 @@ rotate = false
 cubic_interp = true
 loop = true
 lookahead = 4.0
-_sections_unfolded = [ "Transform" ]
 
 [node name="Enemy" type="KinematicBody2D" parent="Path2D/PathFollow2D" index="0"]
 
+rotation = -2.69855
 input_pickable = false
 collision_layer = 4
 collision_mask = 3
@@ -90,5 +96,26 @@ _sections_unfolded = [ "Playback Options" ]
 position = Vector2( 0.16112, 1.01785 )
 scale = Vector2( 1.04604, 0.641881 )
 shape = SubResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Enemy" index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="AreaCollisionShape" type="CollisionShape2D" parent="Path2D/PathFollow2D/Enemy/Area2D" index="0"]
+
+position = Vector2( 0.16112, 1.01785 )
+rotation = -5.69812e-08
+scale = Vector2( 1.04604, 0.641881 )
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="Path2D/PathFollow2D/Enemy/Area2D" to="Path2D/PathFollow2D/Enemy" method="_on_Area2D_body_entered"]
 
 
