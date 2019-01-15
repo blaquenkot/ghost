@@ -14,7 +14,7 @@ _data = {
 custom_solver_bias = 0.0
 extents = Vector2( 7.45673, 13.2615 )
 
-[node name="Enemy" index="0" instance=ExtResource( 1 )]
+[node name="Enemy" instance=ExtResource( 1 )]
 
 [node name="Path2D" parent="." index="0"]
 
