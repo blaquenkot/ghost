@@ -69,6 +69,7 @@ func take_damage():
 		can_take_damage = false
 		$InvincibilityTimer.start()
 		$FlashTimer.start()
+		global.hitSFXPlayer.play()
 		emit_signal('character_took_damage')
 
 func collided_with_enemy():
@@ -77,6 +78,7 @@ func collided_with_enemy():
 	for i in range(number_of_collisions):
 		var collision = get_slide_collision(i)
 		if 'Enemy' in collision.collider.name || 'DeathlyObstacle' in collision.collider.name: # lol
+			vel = vel.bounce(collision.normal)
 			return true
 		
 	return false

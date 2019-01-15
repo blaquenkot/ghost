@@ -28,8 +28,8 @@ func stretch():
 	$Beam.transform.x = (from.position - to.position) / 2 # ¯\_(ツ)_/¯
 
 func _on_Beam_body_entered(body):
-	# TODO: Send "attacked" message instead
-	body.queue_free()
+	if body.has_method('attacked'):
+		body.attacked()
 
 func draw_lightning(from, to, color, width):
 	var origin = Vector2(0,0)

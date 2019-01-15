@@ -61,6 +61,7 @@ func _on_player_took_damage():
 		$CanvasLayer/MarginContainer/TextureRect.texture = load("res://assets/health/health%s.png" % lives)
 		
 func the_end():
+	global.gameOverSFXPlayer.play()
 	var end_screen = EndScreen.instance()
 	$Player1.queue_free()
 	$Player2.queue_free()

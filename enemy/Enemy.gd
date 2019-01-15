@@ -13,3 +13,7 @@ func _physics_process(delta):
 func _on_Area2D_body_entered(body):
 	if 'Player' in body.name:
 		body.take_damage()
+
+func attacked():
+	global.enemyKilledSFXPlayer.play()
+	queue_free()
