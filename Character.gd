@@ -13,8 +13,8 @@ var can_take_damage = true
 var acc = Vector2()
 var vel = Vector2()
 
-var min_x = 0
-var max_x = 0
+var min_pos = Vector2()
+var max_pos = Vector2()
 
 var right_action = ''
 var left_action = ''
@@ -84,9 +84,13 @@ func collided_with_enemy():
 	return false
 	
 func can_move():
-	if (position.x < min_x):
+	if (position.y < min_pos.y):
+		return vel.y > 0
+	elif (position.y > max_pos.y):
+		return vel.y <0
+	elif (position.x < min_pos.x):
 		return vel.x > 0
-	elif (position.x > max_x):
+	elif (position.x > max_pos.x):
 		return vel.x <0
 	
 	return true

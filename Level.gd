@@ -1,6 +1,6 @@
 extends Node2D
 
-var padding = 32
+var padding = Vector2(64,64)
 var DualShot = preload("res://shot/DualShot.tscn")
 var Sparks = preload("res://shot/Sparks.tscn")
 var EndScreen = preload("res://screens/EndScreen.tscn")
@@ -15,10 +15,10 @@ func _process(delta):
 
 		var limits = get_limits()	
 	
-		$Player1.min_x = limits["min"]
-		$Player1.max_x = limits["max"]
-		$Player2.min_x = limits["min"]
-		$Player2.max_x = limits["max"]
+		$Player1.min_pos = limits["min"]
+		$Player1.max_pos = limits["max"]
+		$Player2.min_pos = limits["min"]
+		$Player2.max_pos = limits["max"]
 	
 		if !current_shot && Input.is_action_just_pressed("dual_action"):
 			current_shot = dual_shot()
@@ -46,7 +46,7 @@ func get_limits():
 	var view_size = get_viewport_rect().size / ctrans.get_scale()
 	var max_pos = min_pos + view_size
 	
-	return {"min": min_pos.x + padding, "max": max_pos.x - padding}
+	return {"min": min_pos + padding, "max": max_pos - padding}
 
 func _on_ShotTimer_timeout():
 	if current_shot:
