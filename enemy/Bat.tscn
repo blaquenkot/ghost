@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=1]
 
@@ -13,6 +13,11 @@ _data = {
 
 custom_solver_bias = 0.0
 extents = Vector2( 7.45673, 13.2615 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.97312, 10.0757 )
 
 [node name="Enemy" instance=ExtResource( 1 )]
 
@@ -30,5 +35,9 @@ rotation = -2.68827
 position = Vector2( 0.203567, 0.79478 )
 scale = Vector2( 1.12466, 0.47933 )
 shape = SubResource( 2 )
+
+[node name="AreaCollisionShape" parent="Path2D/PathFollow2D/Enemy/Area2D" index="0"]
+
+shape = SubResource( 3 )
 
 
