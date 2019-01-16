@@ -49,8 +49,10 @@ func get_limits():
 	return {"min": min_pos.x + padding, "max": max_pos.x - padding}
 
 func _on_ShotTimer_timeout():
-	current_shot.queue_free()
-	current_shot = null
+	if current_shot:
+		current_shot.queue_free()
+		current_shot = null
+		
 	$ShotTimer.stop()
 	
 func _on_player_took_damage():
@@ -63,7 +65,13 @@ func _on_player_took_damage():
 func the_end():
 	global.gameOverSFXPlayer.play()
 	var end_screen = EndScreen.instance()
+	
+	if current_shot:
+		current_shot.queue_free()
+		current_shot = null
+		
 	$Player1.queue_free()
 	$Player2.queue_free()
+	
 	add_child(end_screen)
 	# get_tree().reload_current_scene()
