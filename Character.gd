@@ -5,6 +5,7 @@ const ACCEL = 50
 const JUMP_SPEED = 500
 const MAX_SPEED = 500
 const FRICTION = 0.8
+const BOUNCE_BACK_SPEED = 5
 
 signal character_took_damage
 
@@ -61,11 +62,14 @@ func _physics_process(delta):
 
 	move_and_slide(vel, Vector2(0, -1), 10, 4, 1.5)
 	
-	if collided_with_enemy():
-		take_damage()
+	var enemy_collision = self.collided_with_enemy()
+	if enemy_collision:
+		take_damage(enemy_collision.normal)
 
-func take_damage():
+func take_damage(collision_normal):
 	if can_take_damage:
+		vel = vel.bounce(collision_normal) * BOUNCE_BACK_SPEED
+		vel.y = -JUMP_SPEED / 2
 		can_take_damage = false
 		$InvincibilityTimer.start()
 		$FlashTimer.start()
@@ -78,10 +82,9 @@ func collided_with_enemy():
 	for i in range(number_of_collisions):
 		var collision = get_slide_collision(i)
 		if 'Enemy' in collision.collider.name || 'DeathlyObstacle' in collision.collider.name: # lol
-			vel = vel.bounce(collision.normal)
-			return true
+			return collision
 		
-	return false
+	return null
 	
 func can_move():
 	if (position.y < min_pos.y):
