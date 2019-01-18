@@ -6,19 +6,25 @@ var Sparks = preload("res://shot/Sparks.tscn")
 var EndScreen = preload("res://screens/EndScreen.tscn")
 var current_shot
 
+var boss_position = 8100
+
 var lives = 6
+var boss_appeared = false
 
 func _process(delta):
 	if $Player1 && $Player2:
 		$Camera2D.position.x = abs($Player1.position.x - $Player2.position.x) * 0.5 + min($Player1.position.x, $Player2.position.x)
 		$Camera2D.position.y = abs($Player1.position.y - $Player2.position.y) * 0.5 + min($Player1.position.y, $Player2.position.y)
 
-		var limits = get_limits()	
+		var limits = get_limits()
 	
 		$Player1.min_pos = limits["min"]
 		$Player1.max_pos = limits["max"]
 		$Player2.min_pos = limits["min"]
 		$Player2.max_pos = limits["max"]
+	
+		if !boss_appeared and $Camera2D.position.x >= boss_position: #lol
+			boss_appeared()
 	
 		if !current_shot && Input.is_action_just_pressed("dual_action"):
 			current_shot = dual_shot()
@@ -46,7 +52,7 @@ func get_limits():
 	var view_size = get_viewport_rect().size / ctrans.get_scale()
 	var max_pos = min_pos + view_size
 	
-	return {"min": min_pos + padding, "max": max_pos - padding}
+	return  {"min": min_pos + padding, "max": max_pos - padding}
 
 func _on_ShotTimer_timeout():
 	if current_shot:
@@ -57,11 +63,29 @@ func _on_ShotTimer_timeout():
 	
 func _on_player_took_damage():
 	lives -= 1
+	
+	if lives >= 0:
+		$CanvasLayer/MarginContainer/VBoxContainer/TextureRect.texture = load("res://assets/health/health%s.png" % lives)
+		
 	if lives <= 0:
 		the_end()
-	else:
-		$CanvasLayer/MarginContainer/TextureRect.texture = load("res://assets/health/health%s.png" % lives)
+	
+
+func _on_boss_took_damage(new_health):
+	if new_health >= 0:
+		$CanvasLayer/MarginContainer/VBoxContainer/TextureRect2.texture = load("res://assets/health/bosshealth%s.png" % new_health)
 		
+	if new_health <= 0:
+		win_game()
+		
+func boss_appeared():
+	boss_appeared = true
+	$CanvasLayer/MarginContainer/VBoxContainer/TextureRect2.visible = true
+	$Path2D/PathFollow2D/Enemy14.visible = true
+
+func win_game():
+	the_end()
+
 func the_end():
 	global.gameOverSFXPlayer.play()
 	var end_screen = EndScreen.instance()

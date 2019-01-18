@@ -1,0 +1,173 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://enemy/Boss.gd" type="Script" id=1]
+[ext_resource path="res://assets/Wraith.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "idle"
+length = 6.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D2:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D3:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D4:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2, 3, 4, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionShape2D5:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 16.8649
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+
+position = Vector2( 15.7329, 0 )
+input_pickable = false
+collision_layer = 4
+collision_mask = 11
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+speed = 120
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( 0, 3.29731 )
+texture = ExtResource( 2 )
+vframes = 3
+hframes = 4
+frame = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 2.5
+anims/idle = SubResource( 1 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+
+position = Vector2( 14.5633, -0.880504 )
+scale = Vector2( 0.553557, 0.373337 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="3"]
+
+position = Vector2( -0.211783, 3.02865 )
+scale = Vector2( 0.924452, 1.50814 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." index="4"]
+
+position = Vector2( -2.8273, 3.60023 )
+scale = Vector2( 0.63179, 1.23932 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." index="5"]
+
+position = Vector2( 0.273962, 2.00374 )
+scale = Vector2( 0.63179, 0.836695 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="6"]
+
+position = Vector2( -13.7058, -3.66159 )
+rotation = 1.57276
+scale = Vector2( 0.49547, 0.705937 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="FlashTimer" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = false
+autostart = false
+
+[node name="InvincibilityTimer" type="Timer" parent="." index="8"]
+
+process_mode = 1
+wait_time = 1.5
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="FlashTimer" to="." method="_on_FlashTimer_timeout"]
+
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_Timer_timeout"]
+
+
