@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="GHØST"
-run/main_scene="res://Level.tscn"
+run/main_scene="res://screens/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

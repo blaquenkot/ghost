@@ -1,4 +1,4 @@
-extends MarginContainer
+extends CenterContainer
 
 var main_scene = preload("res://Level.tscn")
 
