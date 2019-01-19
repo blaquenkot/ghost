@@ -1,5 +1,7 @@
 extends Node2D
 
+const Utils = preload("utils.gd")
+
 var padding = Vector2(64,64)
 var DualShot = preload("res://shot/DualShot.tscn")
 var Sparks = preload("res://shot/Sparks.tscn")
@@ -40,16 +42,17 @@ func dual_shot():
 	$ShotTimer.start()
 	shot.summon_between($Player1, $Player2)
 
-	# create_sparks_at($Player1.position)
-	# create_sparks_at($Player2.position)
+	create_sparks_at($Player1.position)
+	create_sparks_at($Player2.position)
 	
 	return shot
 
 func create_sparks_at(position):
-	var particles = Sparks.instance()
-	particles.position = position
-	add_child(particles)
-	particles.emitting = true
+	if Utils.can_run_particles():
+		var particles = Sparks.instance()
+		particles.position = position
+		add_child(particles)
+		particles.emitting = true
 
 func get_limits():
 	var ctrans = get_canvas_transform()
