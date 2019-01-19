@@ -8,8 +8,12 @@ var current_shot
 
 var boss_position = 8100
 
-var lives = 6
+var max_lifes = 6
+var lifes
 var boss_appeared = false
+
+func _ready():
+	set_full_lifes()
 
 func _process(delta):
 	if $Player1 && $Player2:
@@ -52,7 +56,7 @@ func get_limits():
 	var view_size = get_viewport_rect().size / ctrans.get_scale()
 	var max_pos = min_pos + view_size
 	
-	return  {"min": min_pos + padding, "max": max_pos - padding}
+	return {"min": min_pos + padding, "max": max_pos - padding}
 
 func _on_ShotTimer_timeout():
 	if current_shot:
@@ -62,12 +66,12 @@ func _on_ShotTimer_timeout():
 	$ShotTimer.stop()
 	
 func _on_player_took_damage():
-	lives -= 1
+	lifes -= 1
 	
-	if lives >= 0:
-		$CanvasLayer/MarginContainer/VBoxContainer/TextureRect.texture = load("res://assets/health/health%s.png" % lives)
+	if lifes >= 0:
+		$CanvasLayer/MarginContainer/VBoxContainer/TextureRect.texture = load("res://assets/health/health%s.png" % lifes)
 		
-	if lives <= 0:
+	if lifes <= 0:
 		the_end()
 	
 
@@ -82,6 +86,10 @@ func boss_appeared():
 	boss_appeared = true
 	$CanvasLayer/MarginContainer/VBoxContainer/TextureRect2.visible = true
 	$Path2D/PathFollow2D/Enemy14.visible = true
+
+func set_full_lifes():
+	lifes = max_lifes
+	$CanvasLayer/MarginContainer/VBoxContainer/TextureRect.texture = load("res://assets/health/health%s.png" % lifes)
 
 func win_game():
 	the_end()
@@ -99,3 +107,6 @@ func the_end():
 	
 	add_child(end_screen)
 	# get_tree().reload_current_scene()
+
+func _on_Potion_player_took_potion():
+	set_full_lifes()
