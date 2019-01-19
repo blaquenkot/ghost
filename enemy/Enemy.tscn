@@ -70,6 +70,8 @@ collision_mask = 3
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Transform", "Visibility" ]
+dead_animation_color = null
+dead_particles_size = 2
 speed = 75
 
 [node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D/Enemy" index="0"]
@@ -96,6 +98,7 @@ _sections_unfolded = [ "Playback Options" ]
 position = Vector2( 0.16112, 1.01785 )
 scale = Vector2( 1.04604, 0.641881 )
 shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Enemy" index="3"]
 
@@ -116,6 +119,15 @@ rotation = -5.69812e-08
 scale = Vector2( 1.04604, 0.641881 )
 shape = SubResource( 4 )
 
+[node name="DieTimer" type="Timer" parent="Path2D/PathFollow2D/Enemy" index="4"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
 [connection signal="body_entered" from="Path2D/PathFollow2D/Enemy/Area2D" to="Path2D/PathFollow2D/Enemy" method="_on_Area2D_body_entered"]
+
+[connection signal="timeout" from="Path2D/PathFollow2D/Enemy/DieTimer" to="Path2D/PathFollow2D/Enemy" method="_on_DieTimer_timeout"]
 
 

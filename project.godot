@@ -70,6 +70,7 @@ ui_click=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"resourc
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="FriendlyAttacks"
 2d_physics/layer_5="DeathlyObstacles"
+2d_physics/layer_6="FX"
 
 [rendering]
 
