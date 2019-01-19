@@ -4,6 +4,43 @@
 	<meta charset="utf-8" />
 	<title></title>
 	<style type="text/css">
+    /*
+		  CUSTOM STYLES
+		*/
+		html, body {
+			height: 100%
+		}
+
+		body {
+			color: white;
+		}
+
+		a {
+			color: #56E09F;
+		}
+
+		a:visited {
+			color: #B4F700;
+		}
+
+		#pre-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+		}
+
+		#start-game {
+			font-size: 1.5em;
+			cursor: pointer;
+			border: 2px solid white;
+			background-color: white;
+			color: #212121;
+			padding: .5em 1em;
+			border-radius: 2px;
+			margin-top: 2em;
+		}
 
 		body {
 			margin: 0;
@@ -194,7 +231,18 @@
 
 </head>
 <body>
-	<div id="container">
+  <div id="pre-container">
+    <h1>GHØST</h1>
+    <h2>A game for <a href="https://itch.io/jam/godot-wild-jam-5" target="_blank">Godot Wild Jam #5</a></h2>
+
+    <p><em>Hint:</em> Try pressing 0 if you're running out of HP :)</p>
+
+    <p>Source code and credits available at <a href="https://github.com/blaquenkot/ghost" target="_blank">github.com/blaquenkot/ghost</a></p>
+
+    <button id="start-game">Start Game</button>
+  </div>
+
+	<div id="container" style="display: none">
 		<canvas id="canvas" width="640" height="480">
 			HTML5 canvas appears to be unsupported in the current browser.<br />
 			Please try updating or use a different browser.
@@ -227,8 +275,13 @@
 
 		var engine = new Engine;
 
-		(function() {
+    document.getElementById('start-game').onclick = () => {
+      document.getElementById('pre-container').style.display = 'none';
+      document.getElementById('container').style.display = 'block';
+      startGame();
+    }
 
+		function startGame() {
 			const BASENAME = 'ghost';
 			const DEBUG_ENABLED = false;
 			const INDETERMINATE_STATUS_STEP_MS = 100;
@@ -379,7 +432,7 @@
 				setStatusMode('notice');
 				initializing = false;
 			});
-		})();
+		};
 	//]]></script>
 </body>
 </html>
