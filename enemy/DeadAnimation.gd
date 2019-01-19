@@ -18,7 +18,7 @@ func _ready():
 func create_particle():
 	var body = RigidBody2D.new()
 
-	body.set_collision_layer_bit(0, true)
+	body.set_collision_layer_bit(0, false)
 	body.set_collision_layer_bit(5, true)
 	body.set_collision_mask_bit(0, true)
 	body.set_gravity_scale(3)
