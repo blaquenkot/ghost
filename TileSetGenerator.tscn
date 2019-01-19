@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/grott_tiles_extended.png" type="Texture" id=1]
-[ext_resource path="res://assets/grott_tiles_extended-fixed.png" type="Texture" id=2]
+[ext_resource path="res://assets/tiles.png" type="Texture" id=1]
+[ext_resource path="res://assets/grott_tiles_extended.png" type="Texture" id=2]
+[ext_resource path="res://assets/grott_tiles_extended-fixed.png" type="Texture" id=3]
 
 [sub_resource type="StreamTexture" id=1]
 
@@ -13,7 +14,7 @@ load_path = "res://.import/tiles.png-0d11a4bcdfb48056f67a66da241684a1.stex"
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 [node name="BG1" type="Sprite" parent="." index="0"]
 
@@ -78,7 +79,15 @@ region_enabled = true
 region_rect = Rect2( 48, 32, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Floor1" type="Sprite" parent="." index="8"]
+[node name="BG9" type="Sprite" parent="." index="8"]
+
+position = Vector2( 160, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Floor1" type="Sprite" parent="." index="9"]
 
 editor/display_folded = true
 position = Vector2( -32, 64 )
@@ -101,7 +110,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Floor2" type="Sprite" parent="." index="9"]
+[node name="Floor2" type="Sprite" parent="." index="10"]
 
 editor/display_folded = true
 position = Vector2( 0, 64 )
@@ -124,7 +133,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Floor3" type="Sprite" parent="." index="10"]
+[node name="Floor3" type="Sprite" parent="." index="11"]
 
 editor/display_folded = true
 position = Vector2( 32, 64 )
@@ -147,9 +156,8 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Floor4" type="Sprite" parent="." index="11"]
+[node name="Floor4" type="Sprite" parent="." index="12"]
 
-editor/display_folded = true
 position = Vector2( 64, 64 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -170,7 +178,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Floor5" type="Sprite" parent="." index="12"]
+[node name="Floor5" type="Sprite" parent="." index="13"]
 
 editor/display_folded = true
 position = Vector2( -32, 96 )
@@ -193,7 +201,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Floor6" type="Sprite" parent="." index="13"]
+[node name="Floor6" type="Sprite" parent="." index="14"]
 
 editor/display_folded = true
 position = Vector2( 0, 96 )
@@ -216,7 +224,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Floor7" type="Sprite" parent="." index="14"]
+[node name="Floor7" type="Sprite" parent="." index="15"]
 
 editor/display_folded = true
 position = Vector2( 32, 96 )
@@ -239,7 +247,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Floor8" type="Sprite" parent="." index="15"]
+[node name="Floor8" type="Sprite" parent="." index="16"]
 
 editor/display_folded = true
 position = Vector2( 64, 96 )
@@ -262,10 +270,10 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Floor9" type="Sprite" parent="." index="16"]
+[node name="Floor9" type="Sprite" parent="." index="17"]
 
 position = Vector2( 96, 32 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -288,10 +296,10 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 0, 16, 16, 0, 16 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Floor10" type="Sprite" parent="." index="17"]
+[node name="Floor10" type="Sprite" parent="." index="18"]
 
 position = Vector2( 128, 32 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 16, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -314,10 +322,10 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 0, 16, 16, 0, 16 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Floor11" type="Sprite" parent="." index="18"]
+[node name="Floor11" type="Sprite" parent="." index="19"]
 
 position = Vector2( 96, 0 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -340,10 +348,10 @@ build_mode = 0
 polygon = PoolVector2Array( 32, 0, 32, 16, 16, 16 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Floor12" type="Sprite" parent="." index="19"]
+[node name="Floor12" type="Sprite" parent="." index="20"]
 
 position = Vector2( 128, 0 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 16, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -366,7 +374,7 @@ build_mode = 0
 polygon = PoolVector2Array( 32, 0, 32, 16, 16, 16 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Ceiling1" type="Sprite" parent="." index="20"]
+[node name="Ceiling1" type="Sprite" parent="." index="21"]
 
 editor/display_folded = true
 position = Vector2( -32, -32 )
@@ -389,7 +397,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Ceiling2" type="Sprite" parent="." index="21"]
+[node name="Ceiling2" type="Sprite" parent="." index="22"]
 
 editor/display_folded = true
 position = Vector2( 0, -32 )
@@ -413,7 +421,7 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 2 )
 
-[node name="Ceiling3" type="Sprite" parent="." index="22"]
+[node name="Ceiling3" type="Sprite" parent="." index="23"]
 
 editor/display_folded = true
 position = Vector2( 32, -32 )
@@ -436,7 +444,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Ceiling4" type="Sprite" parent="." index="23"]
+[node name="Ceiling4" type="Sprite" parent="." index="24"]
 
 position = Vector2( 64, -32 )
 texture = SubResource( 1 )
@@ -459,10 +467,10 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 2 )
 
-[node name="Ceiling5" type="Sprite" parent="." index="24"]
+[node name="Ceiling5" type="Sprite" parent="." index="25"]
 
 position = Vector2( 96, -32 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -485,10 +493,10 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 0, 16, 16, 16, 0, 0, 0, 16, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Ceiling6" type="Sprite" parent="." index="25"]
+[node name="Ceiling6" type="Sprite" parent="." index="26"]
 
 position = Vector2( 128, -32 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 16, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -511,10 +519,10 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 0, 16, 16, 16, 0, 0, 0, 16, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Ceiling7" type="Sprite" parent="." index="26"]
+[node name="Ceiling7" type="Sprite" parent="." index="27"]
 
 position = Vector2( 160, -32 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -537,10 +545,10 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 32, 16, 16, 0, 16, 0, 32 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Ceiling8" type="Sprite" parent="." index="27"]
+[node name="Ceiling8" type="Sprite" parent="." index="28"]
 
 position = Vector2( 192, -32 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 16, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -563,10 +571,10 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 32, 16, 16, 0, 16, 0, 32 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Spikes1" type="Sprite" parent="." index="28"]
+[node name="Spikes1" type="Sprite" parent="." index="29"]
 
 position = Vector2( 96, 96 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 32, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -586,11 +594,11 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 2 )
 
-[node name="Spikes2" type="Sprite" parent="." index="29"]
+[node name="Spikes2" type="Sprite" parent="." index="30"]
 
 editor/display_folded = true
 position = Vector2( 128, 96 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 32, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -610,11 +618,10 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 2 )
 
-[node name="Spikes3" type="Sprite" parent="." index="30"]
+[node name="Spikes3" type="Sprite" parent="." index="31"]
 
-editor/display_folded = true
 position = Vector2( 96, 64 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 64, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -634,11 +641,11 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 2 )
 
-[node name="Spikes4" type="Sprite" parent="." index="31"]
+[node name="Spikes4" type="Sprite" parent="." index="32"]
 
 editor/display_folded = true
 position = Vector2( 128, 64 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 16, 64, 16, 16 )
 _sections_unfolded = [ "Region" ]

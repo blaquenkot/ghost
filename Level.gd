@@ -10,10 +10,12 @@ var WinScreen = preload("res://screens/WinScreen.tscn")
 var current_shot
 
 var boss_position = 8100
+var boss_appeared = false
 
 var max_lifes = 6
 var lifes
-var boss_appeared = false
+
+var can_shoot = true
 
 func _ready():
 	set_full_lifes()
@@ -31,10 +33,12 @@ func _process(delta):
 			$Player2.min_pos = limits["min"]
 			$Player2.max_pos = limits["max"]
 	
-		if !boss_appeared and $Camera2D.position.x >= boss_position: #lol
+		if !boss_appeared && $Camera2D.position.x >= boss_position: #lol
 			boss_appeared()
 	
-		if !current_shot && Input.is_action_just_pressed("dual_action"):
+		if can_shoot && !current_shot && Input.is_action_just_pressed("dual_action"):
+			can_shoot = false
+			$ShotCoolDownTimer.start()
 			current_shot = dual_shot()
 
 func dual_shot():
@@ -139,3 +143,6 @@ func _on_WinGameTimer_timeout():
 	clean()
 		
 	add_child(win_screen)
+
+func _on_ShotCoolDownTimer_timeout():
+	can_shoot = true
