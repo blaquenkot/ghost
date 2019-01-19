@@ -283,7 +283,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -0.541992, -2.03281, 0, 0, -81.6899, 2.64369, -0.0339355, 67.9293, 0, 0, -72.1727, 6.87359, -129.455, 112.143, 0, 0, 107.334, 8.19543, 122.781, 114.514, 0, 0, 28.0231, -2.90806, 15.0427, 70.8091, 0, 0, 86.1842, 19.0346, 15.7205, 33.5411, 71.9083, 102.311, 82.3053, -15.2244, 172.584, 29.8143, 0, 0, -15.1969, 39.3304, 125.695, -23.9192, 208.851, 24.5863, 94.3797, 52.345, -230.688, -15.2121, 0, 0, 2.37932, 38.0691, -229.266, 68.9117, -115.794, 115.529, -22.7357, 92.7934, -16.1606, 10.0284, 0, 0, 0, 0, -0.541992, -2.03281 )
 }
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -335,6 +335,8 @@ stretch_mode = 2
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Torchs" type="Node" parent="." index="3"]
+
+editor/display_folded = true
 
 [node name="Sprite" parent="Torchs" index="0" instance=ExtResource( 5 )]
 
@@ -668,12 +670,14 @@ _sections_unfolded = [ "Smoothing" ]
 
 [node name="Player1" parent="." index="12" instance=ExtResource( 11 )]
 
-position = Vector2( 82.2429, -52.7727 )
+position = Vector2( 102, -52 )
+z_index = 50
 collision/safe_margin = 0.08
 
 [node name="Player2" parent="." index="13" instance=ExtResource( 12 )]
 
-position = Vector2( 82.4763, 139.174 )
+position = Vector2( 102.234, 139.947 )
+z_index = 50
 collision/safe_margin = 0.08
 
 [node name="ShotTimer" type="Timer" parent="." index="14"]
@@ -687,52 +691,63 @@ autostart = false
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( 797.396, 63.5881 )
+z_index = 50
 
 [node name="Enemy3" parent="." index="16" instance=ExtResource( 13 )]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( 1420.85, 61.6054 )
+z_index = 50
 
 [node name="Enemy5" parent="." index="17" instance=ExtResource( 13 )]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( 3372.62, 495.231 )
+z_index = 50
 
 [node name="Enemy6" parent="." index="18" instance=ExtResource( 13 )]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( 3375.42, 690.88 )
+z_index = 50
 
 [node name="Enemy8" parent="." index="19" instance=ExtResource( 13 )]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( 4765.11, 547.824 )
+z_index = 50
 
 [node name="Enemy12" parent="." index="20" instance=ExtResource( 13 )]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( 5046.07, 689.626 )
+z_index = 50
 
 [node name="Enemy13" parent="." index="21" instance=ExtResource( 13 )]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( 5819.09, 695.228 )
+z_index = 50
 
 [node name="Enemy2" parent="." index="22" instance=ExtResource( 14 )]
 
 position = Vector2( 295.758, -45.6639 )
+z_index = 50
 
 [node name="Enemy7" parent="." index="23" instance=ExtResource( 14 )]
 
 position = Vector2( 3952.43, 640.423 )
+z_index = 50
 
 [node name="Enemy9" parent="." index="24" instance=ExtResource( 14 )]
 
 position = Vector2( 5043.56, 515.722 )
+z_index = 50
 
 [node name="Enemy10" parent="." index="25" instance=ExtResource( 14 )]
 
 position = Vector2( 5373.69, 514.608 )
+z_index = 50
 
 [node name="Path2D" type="Path2D" parent="." index="26"]
 
@@ -759,16 +774,19 @@ lookahead = 4.0
 visible = false
 position = Vector2( 0, 0 )
 rotation = -1.5708
+z_index = 50
 collision_mask = 8
-_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
+_sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Enemy11" parent="." index="27" instance=ExtResource( 14 )]
 
 position = Vector2( 5704.92, 514.051 )
+z_index = 50
 
 [node name="Enemy4" parent="." index="28" instance=ExtResource( 14 )]
 
 position = Vector2( 1422.11, -46.5293 )
+z_index = 50
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." index="29"]
 
@@ -819,7 +837,7 @@ autostart = false
 [node name="WinGameTimer" type="Timer" parent="." index="34"]
 
 process_mode = 1
-wait_time = 1.5
+wait_time = 3.0
 one_shot = true
 autostart = false
 
