@@ -93,7 +93,9 @@ func set_full_lifes():
 	$CanvasLayer/MarginContainer/VBoxContainer/TextureRect.texture = load("res://assets/health/health%s.png" % lifes)
 
 func win_game():
-	# play victory sound
+	global.winSFXPlayer.play()
+	$Player1.can_be_controlled = false
+	$Player2.can_be_controlled = false
 	$WinGameTimer.start()
 
 func clean():

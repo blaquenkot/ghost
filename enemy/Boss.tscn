@@ -169,7 +169,7 @@ autostart = false
 [node name="KilledTimer" type="Timer" parent="." index="9"]
 
 process_mode = 1
-wait_time = 0.25
+wait_time = 0.2
 one_shot = false
 autostart = false
 
