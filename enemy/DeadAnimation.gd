@@ -3,17 +3,31 @@ extends Node2D
 export(Color) var color = Color(1, 0, 1)
 export(int) var size = 2
 export(int) var width = 10
+export(float) var timeoff
+export(bool) var explode = false
 
 func init(color, size, width):
 	self.color = color
 	self.size = size
 	self.width = width
+	
+func set_expiration_time(time):
+	timeoff = time
+	
+func set_explode(should_explode):
+	explode = should_explode
 
 func _ready():
 	for i in range(20):
 		var particle = create_particle()
-		particle.apply_impulse(Vector2(0, 0), Vector2(randf() * 100 - 50, randi() % 10 - 20))
+		var horizontal_impulse = randf() * 100 - 50
+		var vertical_impulse = randi() % 100 - 150 if explode else randi() % 10 - 20
+		particle.apply_impulse(Vector2(0, 0), Vector2(horizontal_impulse, vertical_impulse))
 		add_child(particle)
+		
+	if timeoff:
+		$ExpireTimer.set_wait_time(timeoff)
+		$ExpireTimer.start()
 
 func create_particle():
 	var body = RigidBody2D.new()
@@ -41,3 +55,6 @@ func create_particle():
 	body.add_child(geometry)
 	
 	return body
+
+func _on_ExpireTimer_timeout():
+	queue_free()

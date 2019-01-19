@@ -1,12 +1,11 @@
 extends Node2D
 
-const Utils = preload("utils.gd")
-
 var padding = Vector2(64,64)
 var DualShot = preload("res://shot/DualShot.tscn")
 var Sparks = preload("res://shot/Sparks.tscn")
 var EndScreen = preload("res://screens/EndScreen.tscn")
 var WinScreen = preload("res://screens/WinScreen.tscn")
+var DeadAnimation = preload("res://enemy/DeadAnimation.tscn")
 var current_shot
 
 var potion_position = 6800
@@ -62,10 +61,12 @@ func dual_shot():
 	return shot
 
 func create_sparks_for(entity):
-	if Utils.can_run_particles():
-		var particles = Sparks.instance()
-		entity.add_child(particles)
-		particles.emitting = true
+	var particles = DeadAnimation.instance()
+	particles.init(Color(1, 1, 1), 2, 1)
+	particles.set_expiration_time(0.5)
+	particles.set_explode(true)
+	particles.position = entity.position
+	add_child(particles)
 
 func get_limits():
 	var ctrans = get_canvas_transform()
