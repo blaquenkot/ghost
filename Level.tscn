@@ -280,7 +280,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -0.541992, -2.03281, 0, 0, -81.6899, 2.64369, -0.0339355, 67.9293, 0, 0, -72.1727, 6.87359, -129.455, 112.143, 0, 0, 107.334, 8.19543, 122.781, 114.514, 0, 0, 28.0231, -2.90806, 15.0427, 70.8091, 0, 0, 86.1842, 19.0346, 15.7205, 33.5411, 71.9083, 102.311, 82.3053, -15.2244, 172.584, 29.8143, 0, 0, -15.1969, 39.3304, 125.695, -23.9192, 208.851, 24.5863, 94.3797, 52.345, -230.688, -15.2121, 0, 0, 2.37932, 38.0691, -229.266, 68.9117, -115.794, 115.529, -22.7357, 92.7934, -16.1606, 10.0284, 0, 0, 0, 0, -0.541992, -2.03281 )
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -628,7 +628,14 @@ position = Vector2( 7264.5, 765.304 )
 scale = Vector2( 2, 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="WinGameTimer" type="Timer" parent="." index="30"]
+[node name="ShotCoolDownTimer" type="Timer" parent="." index="30"]
+
+process_mode = 1
+wait_time = 0.45
+one_shot = true
+autostart = false
+
+[node name="WinGameTimer" type="Timer" parent="." index="31"]
 
 process_mode = 1
 wait_time = 1.5
@@ -644,6 +651,8 @@ autostart = false
 [connection signal="boss_attacked" from="Path2D/PathFollow2D/Enemy14" to="." method="_on_boss_took_damage"]
 
 [connection signal="player_took_potion" from="Potion" to="." method="_on_Potion_player_took_potion"]
+
+[connection signal="timeout" from="ShotCoolDownTimer" to="." method="_on_ShotCoolDownTimer_timeout"]
 
 [connection signal="timeout" from="WinGameTimer" to="." method="_on_WinGameTimer_timeout"]
 
