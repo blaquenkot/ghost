@@ -22,12 +22,23 @@ func attacked():
 		health -= 1
 		emit_signal('boss_attacked', health)
 		if health <= 0:
-			queue_free()
+			killed()
 		else:
 			can_take_damage = false
 			$InvincibilityTimer.start()
 			$FlashTimer.start()
 			
+func killed():
+	$CollisionShape2D.disabled = true
+	$CollisionShape2D2.disabled = true
+	$CollisionShape2D3.disabled = true
+	$CollisionShape2D4.disabled = true
+	$CollisionShape2D5.disabled = true
+
+	global.bossKilledSFXPlayer.play()
+
+	$KilledTimer.start()
+
 func _on_Timer_timeout():
 	$Sprite.modulate = Color(1,1,1,1)
 	$FlashTimer.stop()
@@ -38,3 +49,16 @@ func _on_FlashTimer_timeout():
 		$Sprite.modulate = Color(1,0,0,1)
 	else: 
 		$Sprite.modulate = Color(1,1,1,1)
+
+func _on_KilledTimer_timeout():
+	if $Sprite.modulate == Color(1,1,1,1):
+		$Sprite.modulate = Color(1,0,0,1)
+	elif $Sprite.modulate == Color(1,0,0,1): 
+		$Sprite.modulate = Color(0,1,0,1)
+	elif $Sprite.modulate == Color(0,1,0,1): 
+		$Sprite.modulate = Color(0,0,1,1)
+	elif $Sprite.modulate == Color(0,0,1,1):
+		$Sprite.modulate = Color(0,0,0,1)
+	else:
+		$KilledTimer.stop()
+		queue_free()

@@ -4,6 +4,7 @@ var padding = Vector2(64,64)
 var DualShot = preload("res://shot/DualShot.tscn")
 var Sparks = preload("res://shot/Sparks.tscn")
 var EndScreen = preload("res://screens/EndScreen.tscn")
+var WinScreen = preload("res://screens/WinScreen.tscn")
 var current_shot
 
 var boss_position = 8100
@@ -92,21 +93,32 @@ func set_full_lifes():
 	$CanvasLayer/MarginContainer/VBoxContainer/TextureRect.texture = load("res://assets/health/health%s.png" % lifes)
 
 func win_game():
-	the_end()
+	# play victory sound
+	$WinGameTimer.start()
 
-func the_end():
-	global.gameOverSFXPlayer.play()
-	var end_screen = EndScreen.instance()
-	
+func clean():
 	if current_shot:
 		current_shot.queue_free()
 		current_shot = null
 		
 	$Player1.queue_free()
 	$Player2.queue_free()
+
+func the_end():
+	global.gameOverSFXPlayer.play()
+	
+	var end_screen = EndScreen.instance()
+	
+	clean()
 	
 	add_child(end_screen)
-	# get_tree().reload_current_scene()
 
 func _on_Potion_player_took_potion():
 	set_full_lifes()
+
+func _on_WinGameTimer_timeout():
+	var win_screen = WinScreen.instance()
+	
+	clean()
+		
+	add_child(win_screen)
