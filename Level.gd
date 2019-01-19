@@ -41,6 +41,9 @@ func _process(delta):
 	
 		if !boss_appeared && $Camera2D.position.x >= boss_position: #lol
 			boss_appeared()
+			
+		if Input.is_action_just_pressed("cheat"): #cheat
+			set_full_lifes()
 	
 		if can_shoot && !current_shot && Input.is_action_just_pressed("dual_action"):
 			can_shoot = false

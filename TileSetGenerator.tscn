@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/tiles.png" type="Texture" id=1]
 [ext_resource path="res://assets/grott_tiles_extended.png" type="Texture" id=2]
-[ext_resource path="res://assets/grott_tiles_extended-fixed.png" type="Texture" id=3]
+[ext_resource path="res://assets/grott_tiles_extended-f-dark.png" type="Texture" id=3]
+[ext_resource path="res://assets/grott_tiles_extended-fixed.png" type="Texture" id=4]
+[ext_resource path="res://assets/grott_tiles_extended-dark.png" type="Texture" id=5]
 
 [sub_resource type="StreamTexture" id=1]
 
@@ -322,7 +324,33 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 0, 16, 16, 0, 16 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Floor11" type="Sprite" parent="." index="19"]
+[node name="Floor14" type="Sprite" parent="." index="19"]
+
+position = Vector2( 160, 64 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Floor14" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Pickable", "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor14/StaticBody2D8" index="0"]
+
+position = Vector2( -8, -8 )
+build_mode = 0
+polygon = PoolVector2Array( 0, 0, 16, 16, 0, 16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Floor11" type="Sprite" parent="." index="20"]
 
 position = Vector2( 96, 0 )
 texture = ExtResource( 2 )
@@ -348,7 +376,7 @@ build_mode = 0
 polygon = PoolVector2Array( 32, 0, 32, 16, 16, 16 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Floor12" type="Sprite" parent="." index="20"]
+[node name="Floor12" type="Sprite" parent="." index="21"]
 
 position = Vector2( 128, 0 )
 texture = ExtResource( 2 )
@@ -374,7 +402,33 @@ build_mode = 0
 polygon = PoolVector2Array( 32, 0, 32, 16, 16, 16 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Ceiling1" type="Sprite" parent="." index="21"]
+[node name="Floor13" type="Sprite" parent="." index="22"]
+
+position = Vector2( 160, 32 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 16, 16, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Floor13" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Pickable", "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor13/StaticBody2D8" index="0"]
+
+position = Vector2( -24, -8 )
+build_mode = 0
+polygon = PoolVector2Array( 32, 0, 32, 16, 16, 16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ceiling1" type="Sprite" parent="." index="23"]
 
 editor/display_folded = true
 position = Vector2( -32, -32 )
@@ -397,7 +451,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Ceiling2" type="Sprite" parent="." index="22"]
+[node name="Ceiling2" type="Sprite" parent="." index="24"]
 
 editor/display_folded = true
 position = Vector2( 0, -32 )
@@ -421,7 +475,7 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 2 )
 
-[node name="Ceiling3" type="Sprite" parent="." index="23"]
+[node name="Ceiling3" type="Sprite" parent="." index="25"]
 
 editor/display_folded = true
 position = Vector2( 32, -32 )
@@ -444,7 +498,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="Ceiling4" type="Sprite" parent="." index="24"]
+[node name="Ceiling4" type="Sprite" parent="." index="26"]
 
 position = Vector2( 64, -32 )
 texture = SubResource( 1 )
@@ -467,10 +521,10 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 2 )
 
-[node name="Ceiling5" type="Sprite" parent="." index="25"]
+[node name="Ceiling5" type="Sprite" parent="." index="27"]
 
 position = Vector2( 96, -32 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -493,10 +547,10 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 0, 16, 16, 16, 0, 0, 0, 16, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Ceiling6" type="Sprite" parent="." index="26"]
+[node name="Ceiling6" type="Sprite" parent="." index="28"]
 
 position = Vector2( 128, -32 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 16, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -519,10 +573,36 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 0, 16, 16, 16, 0, 0, 0, 16, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Ceiling7" type="Sprite" parent="." index="27"]
+[node name="Ceiling10" type="Sprite" parent="." index="29"]
+
+position = Vector2( 192, 32 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Ceiling10" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ceiling10/StaticBody2D12" index="0"]
+
+position = Vector2( -8, -8 )
+build_mode = 0
+polygon = PoolVector2Array( 0, 0, 16, 16, 16, 0, 0, 0, 16, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ceiling7" type="Sprite" parent="." index="30"]
 
 position = Vector2( 160, -32 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -545,10 +625,36 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 32, 16, 16, 0, 16, 0, 32 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Ceiling8" type="Sprite" parent="." index="28"]
+[node name="Ceiling9" type="Sprite" parent="." index="31"]
+
+position = Vector2( 192, 0 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Ceiling9" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ceiling9/StaticBody2D12" index="0"]
+
+position = Vector2( -8, -24 )
+build_mode = 0
+polygon = PoolVector2Array( 0, 32, 16, 16, 0, 16, 0, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ceiling8" type="Sprite" parent="." index="32"]
 
 position = Vector2( 192, -32 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 16, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -571,7 +677,7 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 32, 16, 16, 0, 16, 0, 32 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Spikes1" type="Sprite" parent="." index="29"]
+[node name="Spikes1" type="Sprite" parent="." index="33"]
 
 position = Vector2( 96, 96 )
 texture = ExtResource( 2 )
@@ -594,7 +700,7 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 2 )
 
-[node name="Spikes2" type="Sprite" parent="." index="30"]
+[node name="Spikes2" type="Sprite" parent="." index="34"]
 
 editor/display_folded = true
 position = Vector2( 128, 96 )
@@ -618,7 +724,7 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 2 )
 
-[node name="Spikes3" type="Sprite" parent="." index="31"]
+[node name="Spikes3" type="Sprite" parent="." index="35"]
 
 position = Vector2( 96, 64 )
 texture = ExtResource( 2 )
@@ -641,9 +747,8 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 2 )
 
-[node name="Spikes4" type="Sprite" parent="." index="32"]
+[node name="Spikes4" type="Sprite" parent="." index="36"]
 
-editor/display_folded = true
 position = Vector2( 128, 64 )
 texture = ExtResource( 2 )
 region_enabled = true
