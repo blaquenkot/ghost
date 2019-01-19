@@ -59,10 +59,10 @@ func _on_Timer_timeout():
 	can_take_damage = true
 
 func _on_FlashTimer_timeout():
-	if $Sprite.modulate == Color(1,1,1,1):
+	if $Sprite.modulate == Color(1,1,1,0.2):
 		$Sprite.modulate = Color(1,0,0,1)
 	else: 
-		$Sprite.modulate = Color(1,1,1,1)
+		$Sprite.modulate = Color(1,1,1,0.2)
 
 func _on_KilledTimer_timeout():
 	if $Sprite.modulate == Color(1,1,1,1):
