@@ -20,15 +20,16 @@ func _ready():
 
 func _process(delta):
 	if $Player1 && $Player2:
-		$Camera2D.position.x = abs($Player1.position.x - $Player2.position.x) * 0.5 + min($Player1.position.x, $Player2.position.x)
-		$Camera2D.position.y = abs($Player1.position.y - $Player2.position.y) * 0.5 + min($Player1.position.y, $Player2.position.y)
+		if !boss_appeared:
+			$Camera2D.position.x = abs($Player1.position.x - $Player2.position.x) * 0.5 + min($Player1.position.x, $Player2.position.x)
+			$Camera2D.position.y = abs($Player1.position.y - $Player2.position.y) * 0.5 + min($Player1.position.y, $Player2.position.y)
 
-		var limits = get_limits()
+			var limits = get_limits()
 	
-		$Player1.min_pos = limits["min"]
-		$Player1.max_pos = limits["max"]
-		$Player2.min_pos = limits["min"]
-		$Player2.max_pos = limits["max"]
+			$Player1.min_pos = limits["min"]
+			$Player1.max_pos = limits["max"]
+			$Player2.min_pos = limits["min"]
+			$Player2.max_pos = limits["max"]
 	
 		if !boss_appeared and $Camera2D.position.x >= boss_position: #lol
 			boss_appeared()
@@ -87,6 +88,18 @@ func _on_boss_took_damage(new_health):
 		
 func boss_appeared():
 	boss_appeared = true
+
+	var view_size = get_viewport_rect().size / get_canvas_transform().get_scale()
+	var min_pos = boss_position - view_size.x * 0.25
+	var max_pos = boss_position + view_size.x
+	
+	$Camera2D.position.x = boss_position + view_size.x*0.3
+	$Camera2D.position.y *= 0.7
+	
+	$Player1.min_pos.x = min_pos
+	$Player1.max_pos.x = max_pos
+	$Player2.min_pos.x = min_pos
+	$Player2.max_pos.x = max_pos
 	$CanvasLayer/MarginContainer/VBoxContainer/TextureRect2.visible = true
 	$Path2D/PathFollow2D/Enemy14.visible = true
 
@@ -95,7 +108,9 @@ func set_full_lifes():
 	$CanvasLayer/MarginContainer/VBoxContainer/TextureRect.texture = load("res://assets/health/health%s.png" % lifes)
 
 func win_game():
-	# play victory sound
+	global.winSFXPlayer.play()
+	$Player1.can_be_controlled = false
+	$Player2.can_be_controlled = false
 	$WinGameTimer.start()
 
 func clean():

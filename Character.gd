@@ -10,6 +10,7 @@ const BOUNCE_BACK_SPEED = 5
 signal character_took_damage
 
 var can_take_damage = true
+var can_be_controlled = true
 
 var acc = Vector2()
 var vel = Vector2()
@@ -36,12 +37,13 @@ func _physics_process(delta):
 	else:
 		acc.y = GRAVITY
 
-	if Input.is_action_pressed(right_action):
-		acc.x = ACCEL
-	elif Input.is_action_pressed(left_action):
-		acc.x = -ACCEL
-	else:
-		acc.x = 0
+	if can_be_controlled:
+		if Input.is_action_pressed(right_action):
+			acc.x = ACCEL
+		elif Input.is_action_pressed(left_action):
+			acc.x = -ACCEL
+		else:
+			acc.x = 0
 
 	# TODO: Add terminal velocity in y
 	vel += acc
@@ -56,9 +58,14 @@ func _physics_process(delta):
 	if !can_move():
 		vel.x = 0
 	
-	if is_on_floor() && Input.is_action_just_pressed(jump_action):
-		global.jumpSFXPlayer.play()
-		vel.y = -JUMP_SPEED
+	if is_on_floor():
+		if can_be_controlled:
+			if Input.is_action_just_pressed(jump_action):
+				global.jumpSFXPlayer.play()
+				vel.y = -JUMP_SPEED
+		elif randf() > 0.97:
+			global.jumpSFXPlayer.play()
+			vel.y = -JUMP_SPEED
 
 	move_and_slide(vel, Vector2(0, -1), 10, 4, 1.5)
 	
