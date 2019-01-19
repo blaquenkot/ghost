@@ -9,6 +9,7 @@ func _on_FlashTimer_timeout():
 		modulate = Color(1,1,1,1)
 
 func _on_Area2D_body_entered(body):
+	print("_on_Area2D_body_entered")
 	if 'Player' in body.name:
 		emit_signal('player_took_potion')
 		global.potionSFXPlayer.play()

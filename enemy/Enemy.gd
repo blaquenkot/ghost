@@ -15,10 +15,6 @@ func _ready():
 func _physics_process(delta):
 	parent.set_offset(parent.get_offset() + speed * delta)
 
-func _on_Area2D_body_entered(body):
-	if 'Player' in body.name:
-		body.take_damage((position - body.position).normalized())
-
 func attacked():
 	die()
 	
@@ -37,7 +33,6 @@ func show_death_animation():
 func disappear():
 	$Sprite.hide()
 	$CollisionShape2D.disabled = true
-	$Area2D.monitoring = false
 
 func _on_DieTimer_timeout():
 	queue_free()

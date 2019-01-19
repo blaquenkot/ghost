@@ -8,8 +8,9 @@ var DeadAnimation = preload("res://enemy/DeadAnimation.tscn")
 
 export (int) var speed = 120
 
-var health = 5
+var health = 6
 var alive = true
+
 var can_take_damage = true
 
 func _ready():
@@ -39,6 +40,7 @@ func killed():
 	$CollisionShape2D3.disabled = true
 	$CollisionShape2D4.disabled = true
 	$CollisionShape2D5.disabled = true
+	set_collision_mask_bit(2, false)
 
 	global.bossKilledSFXPlayer.play()
 

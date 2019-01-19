@@ -28,7 +28,7 @@ tracks/0/keys = {
 position = Vector2( 0, 0.105888 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Collision", "Transform" ]
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
 
 [node name="Sprite" parent="." index="0"]
 
@@ -36,7 +36,7 @@ texture = ExtResource( 3 )
 hframes = 3
 frame = 2
 region_enabled = false
-_sections_unfolded = [ "Animation", "Material", "Offset", "Transform", "Visibility" ]
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" parent="." index="1"]
 
@@ -46,5 +46,9 @@ scale = Vector2( 1.01912, 1.04305 )
 [node name="AnimationPlayer" parent="." index="2"]
 
 anims/idle = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="ThreatDetectionArea" index="0"]
+
+position = Vector2( 0.0633698, 1.10971 )
 
 

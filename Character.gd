@@ -68,10 +68,6 @@ func _physics_process(delta):
 			vel.y = -JUMP_SPEED
 
 	move_and_slide(vel, Vector2(0, -1), 10, 4, 1.5)
-	
-	var enemy_collision = self.collided_with_enemy()
-	if enemy_collision:
-		take_damage(enemy_collision.normal)
 
 func take_damage(collision_normal):
 	if can_take_damage:
@@ -82,16 +78,6 @@ func take_damage(collision_normal):
 		$FlashTimer.start()
 		global.hitSFXPlayer.play()
 		emit_signal('character_took_damage')
-
-func collided_with_enemy():
-	var number_of_collisions = get_slide_count()
-	
-	for i in range(number_of_collisions):
-		var collision = get_slide_collision(i)
-		if 'Enemy' in collision.collider.name || 'DeathlyObstacle' in collision.collider.name: # lol
-			return collision
-		
-	return null
 	
 func can_move():
 	if (position.y < min_pos.y):
@@ -109,9 +95,29 @@ func _on_Timer_timeout():
 	$Sprite.modulate = Color(1,1,1,1)
 	$FlashTimer.stop()
 	can_take_damage = true
+	
+	var colliding_body = $ThreatDetectionArea.get_overlapping_bodies().front()
+	
+	if colliding_body:
+		on_hit_by_enemy(colliding_body)
+	elif !$ThreatDetectionArea.get_overlapping_areas().empty():
+		on_hit_by_floor()
 
 func _on_FlashTimer_timeout():
 	if $Sprite.modulate == Color(1,1,1,1):
 		$Sprite.modulate = Color(10,10,10,1)
 	else: 
 		$Sprite.modulate = Color(1,1,1,1)
+		
+func on_hit_by_enemy(body):
+	take_damage((body.position - position).normalized())
+	
+func on_hit_by_floor():
+	take_damage(Vector2(0, -1))
+
+func _on_ThreatDetectionArea_body_entered(body):
+	on_hit_by_enemy(body)
+
+func _on_ThreatDetectionArea_area_entered(area):
+	on_hit_by_floor()
+
