@@ -9,6 +9,9 @@ var EndScreen = preload("res://screens/EndScreen.tscn")
 var WinScreen = preload("res://screens/WinScreen.tscn")
 var current_shot
 
+var potion_position = 6800
+var potion_appeared = false
+
 var boss_position = 8100
 var boss_appeared = false
 
@@ -32,6 +35,9 @@ func _process(delta):
 			$Player1.max_pos = limits["max"]
 			$Player2.min_pos = limits["min"]
 			$Player2.max_pos = limits["max"]
+	
+		if !potion_appeared && $Camera2D.position.x >= potion_position: #lol
+			potion_appeared()
 	
 		if !boss_appeared && $Camera2D.position.x >= boss_position: #lol
 			boss_appeared()
@@ -82,7 +88,6 @@ func _on_player_took_damage():
 	if lifes <= 0:
 		the_end()
 	
-
 func _on_boss_took_damage(new_health):
 	if new_health >= 0:
 		$CanvasLayer/MarginContainer/VBoxContainer/TextureRect2.texture = load("res://assets/health/bosshealth%s.png" % new_health)
@@ -90,8 +95,15 @@ func _on_boss_took_damage(new_health):
 	if new_health <= 0:
 		win_game()
 		
+func potion_appeared():
+	potion_appeared = true
+	
+	play_calm_music()
+		
 func boss_appeared():
 	boss_appeared = true
+	
+	play_boss_music()
 
 	var view_size = get_viewport_rect().size / get_canvas_transform().get_scale()
 	var min_pos = boss_position - view_size.x * 0.25
@@ -106,6 +118,16 @@ func boss_appeared():
 	$Player2.max_pos.x = max_pos
 	$CanvasLayer/MarginContainer/VBoxContainer/TextureRect2.visible = true
 	$Path2D/PathFollow2D/Enemy14.visible = true
+
+func play_calm_music():
+	$MusicPlayer.stop()
+	$BossMusicPlayer.stop()
+	$CalmMusicPlayer.play()
+	
+func play_boss_music():
+	$MusicPlayer.stop()
+	$CalmMusicPlayer.stop()
+	$BossMusicPlayer.play()
 
 func set_full_lifes():
 	lifes = max_lifes

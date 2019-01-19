@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/10_Final_Breath.ogg-a709a410692ec3b766b0766602b6a512.oggstr"
+
+[deps]
+
+source_file="res://assets/10_Final_Breath.ogg"
+dest_files=[ "res://.import/10_Final_Breath.ogg-a709a410692ec3b766b0766602b6a512.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
