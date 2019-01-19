@@ -42,16 +42,15 @@ func dual_shot():
 	$ShotTimer.start()
 	shot.summon_between($Player1, $Player2)
 
-	create_sparks_at($Player1.position)
-	create_sparks_at($Player2.position)
+	create_sparks_for($Player1)
+	create_sparks_for($Player2)
 	
 	return shot
 
-func create_sparks_at(position):
+func create_sparks_for(entity):
 	if Utils.can_run_particles():
 		var particles = Sparks.instance()
-		particles.position = position
-		add_child(particles)
+		entity.add_child(particles)
 		particles.emitting = true
 
 func get_limits():
