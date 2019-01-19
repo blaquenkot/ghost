@@ -30,7 +30,7 @@ func die():
 	
 func show_death_animation():
 	var animation = DeadAnimation.instance()
-	animation.init(dead_animation_color, dead_particles_size, $Sprite.region_rect.size.y)
+	animation.init(dead_animation_color, dead_particles_size, $Sprite.region_rect.size.x)
 	speed = 0
 	add_child(animation)
 	

@@ -4,16 +4,19 @@ signal boss_attacked(new_health)
 
 onready var parent = get_parent()
 
+var DeadAnimation = preload("res://enemy/DeadAnimation.tscn")
+
 export (int) var speed = 120
 
 var health = 5
+var alive = true
 var can_take_damage = true
 
 func _ready():
 	$AnimationPlayer.play('idle')
 	
 func _physics_process(delta):
-	if visible:
+	if visible && alive:
 		parent.set_offset(parent.get_offset() + speed * delta)
 	
 func attacked():
@@ -29,6 +32,8 @@ func attacked():
 			$FlashTimer.start()
 			
 func killed():
+	alive = false
+	
 	$CollisionShape2D.disabled = true
 	$CollisionShape2D2.disabled = true
 	$CollisionShape2D3.disabled = true
@@ -37,7 +42,14 @@ func killed():
 
 	global.bossKilledSFXPlayer.play()
 
+	show_death_animation()
+
 	$KilledTimer.start()
+
+func show_death_animation():
+	var animation = DeadAnimation.instance()
+	animation.init(Color(0,0,0), 4, $Sprite.region_rect.size.x)
+	add_child(animation)
 
 func _on_Timer_timeout():
 	$Sprite.modulate = Color(1,1,1,1)
