@@ -2,7 +2,7 @@
 
 ## A game for [Godot Wild Jam #5](https://itch.io/jam/godot-wild-jam-5)
 
-Play at blaquenkot.github.com/ghost!
+Play at [blaquenkot.github.com/ghost](https://blaquenkot.github.io/ghost/)!
 
 ---
 
